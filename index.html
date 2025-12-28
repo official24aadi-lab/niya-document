@@ -8,6 +8,29 @@
 <style>
 
 *{margin:0;padding:0;box-sizing:border-box;font-family:Poppins,Arial}
+<audio id="bgMusic" src="pardesia.mp3" loop></audio>
+
+<script>
+// page load par autoplay try karega
+document.addEventListener("DOMContentLoaded", () => {
+
+  const m = document.getElementById("bgMusic");
+
+  // autoplay attempt
+  m.play().catch(() => {
+    console.log("Autoplay blocked — waiting for tap");
+  });
+
+  // fallback → user pehli tap kare = music play
+  document.body.addEventListener(
+    "click",
+    () => {
+      m.play().catch(() => {});
+    },
+    { once: true }
+  );
+});
+</script>
 
 body{
 background:linear-gradient(120deg,#2a001f,#120012,#000000);
@@ -196,3 +219,4 @@ Made specially for Niya — by a true friend
 
 </body>
 </html>
+
